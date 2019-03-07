@@ -39,7 +39,7 @@ class Fetcher {
               .exec((err, result) => {
                 this.bot.sendMessage(
                   msg.chat.id,
-                  `Hey there!\nYou'll get notified about the latest Xcode updates asap!`
+                  `Hey there!\nYou'll get notified about the latest Xcode updates asap! 👍`
                 )
               })
           }
@@ -55,6 +55,13 @@ class Fetcher {
         if (latestXcodeRelease) {
           this.sendLatestMessage(latestXcodeRelease, msg.chat.id)
         }
+      } else if (msg.text === '/users') {
+        redisClient.get(recipientIds, (err, result) => {
+          this.bot.sendMessage(
+            msg.chat.id,
+            `Currently ${result.length} people are using this bot. 🎉`
+          )
+        })
       }
     })
   }
@@ -65,7 +72,7 @@ class Fetcher {
       : 'GM'
     this.bot.sendMessage(
       id,
-      `A new ${latestXcodeRelease.name} version has been released: ${
+      `🚀 A new ${latestXcodeRelease.name} version has been released: ${
         latestXcodeRelease.version.number
       }, build ${latestXcodeRelease.version.build}, ${releaseType}\nRelease notes:\n${
         latestXcodeRelease.links.notes.url
