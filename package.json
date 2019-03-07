@@ -23,6 +23,7 @@
     "cron": "^1.6.0",
     "dotenv": "^6.2.0",
     "node-telegram-bot-api": "^0.30.0",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "typescript": "^3.3.3333"
   }
 }
