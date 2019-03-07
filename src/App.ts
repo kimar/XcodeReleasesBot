@@ -57,10 +57,8 @@ class Fetcher {
         }
       } else if (msg.text === '/users') {
         redisClient.get(recipientIds, (err, result) => {
-          this.bot.sendMessage(
-            msg.chat.id,
-            `Currently ${result.length} people are using this bot. 🎉`
-          )
+          const ids = JSON.parse(result) || []
+          this.bot.sendMessage(msg.chat.id, `Currently ${ids.length} people are using this bot. 🎉`)
         })
       }
     })
