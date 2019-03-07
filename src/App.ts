@@ -91,12 +91,8 @@ class Fetcher {
   poll = async () => {
     const latestXcodeRelease = await this.fetchLatestXcodeRelease()
     if (latestXcodeRelease) {
-      console.log(latestXcodeRelease)
       redisClient.watch(err => {
         redisClient.get(latestXcodeBuildKey, (err, build) => {
-          console.log(build)
-          console.log(latestXcodeRelease.version.build)
-
           if (build === latestXcodeRelease.version.build) {
             return
           }
