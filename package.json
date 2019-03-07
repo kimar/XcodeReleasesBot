@@ -15,9 +15,13 @@
   },
   "dependencies": {
     "@types/cron": "^1.6.1",
+    "@types/dotenv": "^6.1.0",
     "@types/node-telegram-bot-api": "^0.30.4",
+    "@types/redis": "^2.8.10",
     "axios": "^0.18.0",
     "cron": "^1.6.0",
-    "node-telegram-bot-api": "^0.30.0"
+    "dotenv": "^6.2.0",
+    "node-telegram-bot-api": "^0.30.0",
+    "redis": "^2.8.0"
   }
 }
