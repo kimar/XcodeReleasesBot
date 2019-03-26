@@ -1,7 +1,11 @@
 # Xcode Releases Telegram Bot
 ## Fetching data from https://github.com/xcodereleases/xcodereleases.com
 
-### Getting started
+### 📝 Subscribe via
+
+[http://t.me/XcodeReleasesBot](http://t.me/XcodeReleasesBot)
+
+### 🏗 Getting started
 
 ```
 $ yarn
