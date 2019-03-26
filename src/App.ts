@@ -88,27 +88,28 @@ class Fetcher {
 
   poll = async () => {
     const latestXcodeRelease = await this.fetchLatestXcodeRelease()
-    if (latestXcodeRelease) {
-      redisClient.watch(err => {
-        redisClient.get(latestXcodeBuildKey, (err, build) => {
-          if (build === latestXcodeRelease.version.build) {
-            return
-          }
-          redisClient.get(recipientIds, (err, ids) => {
-            const idsArray = JSON.parse(ids) || []
-            const sentIds = new Array()
-            for (let i = 0; i < idsArray.length; i++) {
-              const id = idsArray[i]
-              if (sentIds.indexOf(id) === -1) {
-                this.sendLatestMessage(latestXcodeRelease, id)
-                sentIds.push(id)
-              }
+    if (!latestXcodeRelease) {
+      return
+    }
+    redisClient.watch(err => {
+      redisClient.get(latestXcodeBuildKey, (err, build) => {
+        if (build === latestXcodeRelease.version.build) {
+          return
+        }
+        redisClient.get(recipientIds, (err, ids) => {
+          const idsArray = JSON.parse(ids) || []
+          const sentIds = new Array()
+          for (let i = 0; i < idsArray.length; i++) {
+            const id = idsArray[i]
+            if (sentIds.indexOf(id) === -1) {
+              this.sendLatestMessage(latestXcodeRelease, id)
+              sentIds.push(id)
             }
-            redisClient.set(latestXcodeBuildKey, latestXcodeRelease.version.build.toString())
-          })
+          }
+          redisClient.set(latestXcodeBuildKey, latestXcodeRelease.version.build.toString())
         })
       })
-    }
+    })
   }
 }
 
