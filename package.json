@@ -12,13 +12,13 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.10"
-  },
-  "dependencies": {
+    "nodemon": "^1.18.10",
     "@types/cron": "^1.6.1",
     "@types/dotenv": "^6.1.0",
     "@types/node-telegram-bot-api": "^0.30.4",
-    "@types/redis": "^2.8.10",
+    "@types/redis": "^2.8.10"
+  },
+  "dependencies": {
     "axios": "^0.18.0",
     "cron": "^1.6.0",
     "dotenv": "^6.2.0",
