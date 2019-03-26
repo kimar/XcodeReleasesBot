@@ -5,6 +5,12 @@
 
 [http://t.me/XcodeReleasesBot](http://t.me/XcodeReleasesBot)
 
+### Requirements
+
+* Yarn
+* NodeJS
+* Somewhere to host this, I'd recommend [Heroku](https://heroku.com)
+
 ### 🏗 Get started
 
 ```
