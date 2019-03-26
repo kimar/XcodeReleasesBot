@@ -3,5 +3,5 @@
 
 ## Todo
 
-* Move @types/* to `devDependencies`
+* Move `@types/*` to `devDependencies`
 
