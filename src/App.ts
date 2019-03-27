@@ -6,6 +6,9 @@ import { CronJob } from 'cron'
 import axios from 'axios'
 import redis from 'redis'
 import { Redis, Telegram, CronJob as CronJobConfig } from './Config'
+import express from 'express'
+
+const app = express()
 
 const releasesUrl = 'https://xcodereleases.com/data.json'
 
@@ -114,3 +117,5 @@ class Fetcher {
 
 const fetcher = new Fetcher()
 fetcher.poll()
+
+app.listen(process.env.PORT || 3000)
