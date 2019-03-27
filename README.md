@@ -1,5 +1,5 @@
 # Xcode Releases Telegram Bot
-## Fetching data from https://github.com/xcodereleases/xcodereleases.com
+## Fetching data from https://xcodereleases.com/data.json
 
 ### 📝 Subscribe via Telegram
 
