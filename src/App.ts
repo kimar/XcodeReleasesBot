@@ -50,7 +50,7 @@ class Fetcher {
       if (['/help', '/h', 'help'].includes(msg.text || '')) {
         this.bot.sendMessage(
           msg.chat.id,
-          `Available commands:\n/latest -> Responds with latest available Xcode release.`
+          `Available commands:\n/latest -> Responds with latest available Xcode release.\n/unsubscribe -> Don't get new Xcode release notifications.`
         )
       } else if (msg.text === '/latest') {
         const latestXcodeRelease = await this.fetchLatestXcodeRelease()
@@ -61,6 +61,19 @@ class Fetcher {
         redisClient.get(recipientIds, (err, result) => {
           const ids = JSON.parse(result) || []
           this.bot.sendMessage(msg.chat.id, `Currently ${ids.length} people are using this bot. 🎉`)
+        })
+      } else if (msg.text === '/unsubscribe') {
+        redisClient.get(recipientIds, (err, result) => {
+          const ids = (JSON.parse(result) || []).filter((id: number) => id !== msg.chat.id)
+          redisClient
+            .multi()
+            .set(recipientIds, JSON.stringify(ids))
+            .exec((err, result) => {
+              this.bot.sendMessage(
+                msg.chat.id,
+                `😌 You're now unsubscribed, just message me to subscribe again.`
+              )
+            })
         })
       }
     })
