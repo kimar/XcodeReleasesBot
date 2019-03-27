@@ -3,7 +3,7 @@
 
 ### 📝 Subscribe via Telegram
 
-[http://t.me/XcodeReleasesBot](http://t.me/XcodeReleasesBot)
+[https://t.me/XcodeReleasesBot](https://t.me/XcodeReleasesBot)
 
 ### Requirements
 
