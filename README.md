@@ -21,7 +21,9 @@ $ yarn dev
 ### Available commands
 
 `/latest` -> Sends you information about the most current Xcode build available via Xcodereleases.com
+
 `/unsubscribe` -> Unsubscribes you from the list of recipients of new Xcode builds
+
 `/users` -> Show the number of current users of this bot
 
 ### [LICENSE](LICENSE.md)
