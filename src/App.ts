@@ -50,7 +50,10 @@ class Fetcher {
       if (['/help', '/h', 'help'].includes(msg.text || '')) {
         this.bot.sendMessage(
           msg.chat.id,
-          `Available commands:\n/latest -> Responds with latest available Xcode release.\n/unsubscribe -> Don't get new Xcode release notifications.`
+          `Available commands:\n
+          /latest -> Responds with latest available Xcode release.\n
+          /unsubscribe -> Don't get new Xcode release notifications.\n
+          /users -> Returns the current number of subscribers of this bot.`
         )
       } else if (msg.text === '/latest') {
         const latestXcodeRelease = await this.fetchLatestXcodeRelease()
