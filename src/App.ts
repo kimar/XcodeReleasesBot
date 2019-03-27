@@ -7,8 +7,7 @@ import axios from 'axios'
 import redis from 'redis'
 import { Redis, Telegram, CronJob as CronJobConfig } from './Config'
 
-const releasesUrl =
-  'https://raw.githubusercontent.com/xcodereleases/xcodereleases.com/master/_data/releases.json'
+const releasesUrl = 'https://xcodereleases.com/data.json'
 
 const redisClient = redis.createClient({
   host: Redis.Host,
