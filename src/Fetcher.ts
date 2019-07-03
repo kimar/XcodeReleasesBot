@@ -102,7 +102,7 @@ export class Fetcher {
   }
 
   private unsubscribe = async (id: string) => {
-    await this.pool.query(`DELETE FROM subscribers WHERE telegram_id = '${id}' LIMIT 1`)
+    await this.pool.query(`DELETE FROM subscribers WHERE telegram_id = '${id}'`)
   }
 
   poll = async () => {
