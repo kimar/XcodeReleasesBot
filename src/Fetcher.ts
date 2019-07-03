@@ -99,10 +99,12 @@ export class Fetcher {
 
   private subscribe = async (id: string) => {
     await this.pool.query('INSERT INTO subscribers (telegram_id) VALUES ($1)', [id])
+    console.log(`Subscriber has been added: ${id}`)
   }
 
   private unsubscribe = async (id: string) => {
     await this.pool.query(`DELETE FROM subscribers WHERE telegram_id = '${id}'`)
+    console.log(`Subscriber has been removed: ${id}`)
   }
 
   poll = async () => {
