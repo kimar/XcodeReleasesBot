@@ -106,8 +106,11 @@ export class Fetcher {
   }
 
   poll = async () => {
+    console.log('Polling for new Xcode releases…')
+
     const latestXcodeRelease = await this.fetchLatestXcodeRelease()
     if (!latestXcodeRelease) {
+      console.log('No Xcode release found @ xcodereleases.com, bailing out.')
       return
     }
 
@@ -119,16 +122,24 @@ export class Fetcher {
       lastVersionRows.rowCount > 0 &&
       lastVersionRows.rows[0].build === latestXcodeRelease.version.build
     ) {
+      console.log(
+        `Latest Xcode release (${lastVersionRows.rows[0].build}) has already been propagated.`
+      )
       return
     }
 
     const subscribersResult = await this.getAllSubscribers()
     subscribersResult.forEach(async subscriber => {
+      console.log(`Sending new Xcode release message to ${subscriber}`)
       this.sendLatestMessage(latestXcodeRelease, subscriber)
     })
 
     await this.pool.query('INSERT INTO xcode_versions (build) VALUES ($1)', [
       latestXcodeRelease.version.build.toString()
     ])
+
+    console.log(
+      `Added Xcode release (${latestXcodeRelease.version.build.toString()}) to known versions.`
+    )
   }
 }

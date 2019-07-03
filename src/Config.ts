@@ -7,7 +7,7 @@ class Telegram {
 }
 
 class CronJob {
-  static Schedule = process.env.CRONJOB_SCHEDULE || '0 */1 * * *'
+  static Schedule = process.env.CRONJOB_SCHEDULE || '*/5 * * * *'
 }
 
 export { Telegram, CronJob, Postgres }
