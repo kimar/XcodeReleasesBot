@@ -98,7 +98,10 @@ export class Fetcher {
   }
 
   private subscribe = async (id: string) => {
-    await this.pool.query('INSERT INTO subscribers (telegram_id) VALUES ($1)', [id])
+    await this.pool.query('INSERT INTO subscribers (telegram_id, added_at) VALUES ($1, $2)', [
+      id,
+      new Date()
+    ])
     console.log(`Subscriber has been added: ${id}`)
   }
 
@@ -136,8 +139,9 @@ export class Fetcher {
       this.sendLatestMessage(latestXcodeRelease, subscriber)
     })
 
-    await this.pool.query('INSERT INTO xcode_versions (build) VALUES ($1)', [
-      latestXcodeRelease.version.build.toString()
+    await this.pool.query('INSERT INTO xcode_versions (build, added_at) VALUES ($1, $2)', [
+      latestXcodeRelease.version.build.toString(),
+      new Date()
     ])
 
     console.log(
