@@ -26,7 +26,7 @@ export class Fetcher {
         await this.subscribe(msg.chat.id.toString())
         this.bot.sendMessage(
           msg.chat.id,
-          `Hey there!\nYou'll get notified about the latest Xcode updates asap! 👍`
+          `Hey there!\nYou'll get notified about the latest Xcode releases asap! 👍`
         )
       }
 
@@ -46,7 +46,7 @@ export class Fetcher {
       } else if (msg.text === '/users') {
         this.bot.sendMessage(
           msg.chat.id,
-          `Currently ${await this.getSubscriberCount()} people are using this bot. 🎉`
+          `Currently ${await this.getSubscriberCount()} people are subscribed to this bot. 🎉`
         )
       } else if (msg.text === '/unsubscribe') {
         await this.unsubscribe(msg.chat.id.toString())
