@@ -49,7 +49,7 @@ export class Fetcher {
           `Currently ${await this.getSubscriberCount()} people are using this bot. 🎉`
         )
       } else if (msg.text === '/unsubscribe') {
-        this.unsubscribe(msg.chat.id.toString())
+        await this.unsubscribe(msg.chat.id.toString())
         this.bot.sendMessage(
           msg.chat.id,
           `😌 You're now unsubscribed, just message me to subscribe again.`
