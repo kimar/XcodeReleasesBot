@@ -5,7 +5,7 @@
 
 [https://t.me/XcodeReleasesBot](https://t.me/XcodeReleasesBot)
 
-### Requirements
+### 🛠 Requirements
 
 * Yarn
 * NodeJS
@@ -24,7 +24,7 @@ $ yarn
 $ yarn dev
 ```
 
-### Available commands
+### 🤖 Available commands
 
 `/latest` -> Sends you information about the most current Xcode build available via Xcodereleases.com
 
