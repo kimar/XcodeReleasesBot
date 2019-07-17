@@ -62,14 +62,18 @@ export class Fetcher {
     const releaseType = latestXcodeRelease.version.release.beta
       ? `Beta ${latestXcodeRelease.version.release.beta}`
       : 'GM'
-    this.bot.sendMessage(
-      id,
-      `🚀 A new ${latestXcodeRelease.name} version has been released: ${
-        latestXcodeRelease.version.number
-      }, build ${latestXcodeRelease.version.build}, ${releaseType}\nRelease notes:\n${
-        latestXcodeRelease.links.notes.url
-      }`
-    )
+    try {
+      this.bot.sendMessage(
+        id,
+        `🚀 A new ${latestXcodeRelease.name} version has been released: ${
+          latestXcodeRelease.version.number
+        }, build ${latestXcodeRelease.version.build}, ${releaseType}\nRelease notes:\n${
+          latestXcodeRelease.links.notes.url
+        }`
+      )
+    } catch (error) {
+      console.log(`Could not send Xcode Release message to user: ${error}`)
+    }
   }
 
   private fetchLatestXcodeRelease = async () => {
