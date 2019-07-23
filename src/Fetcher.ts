@@ -2,8 +2,8 @@ import TelegramBot from 'node-telegram-bot-api'
 import { CronJob } from 'cron'
 import axios from 'axios'
 import { Telegram, CronJob as CronJobConfig, Postgres } from './Config'
-
 import { Pool } from 'pg'
+import moment from 'moment'
 
 const releasesUrl = 'https://xcodereleases.com/data.json'
 
@@ -79,7 +79,13 @@ export class Fetcher {
   private fetchLatestXcodeRelease = async () => {
     const result = await axios.get(releasesUrl)
     if (result.data && result.data.length > 0) {
-      return result.data[0]
+      const sortedResult = result.data
+        .map((item: any) => {
+          item._moment = moment(item.date)
+          return item
+        })
+        .sort((a: any, b: any) => b._moment - a._moment)
+      return sortedResult[0]
     }
     return null
   }
