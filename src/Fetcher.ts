@@ -59,15 +59,27 @@ export class Fetcher {
   }
 
   private sendLatestMessage = (latestXcodeRelease: any, id: string) => {
-    const releaseType = latestXcodeRelease.version.release.beta
-      ? `Beta ${latestXcodeRelease.version.release.beta}`
-      : 'GM'
+    const releaseType = (): string => {
+      if (latestXcodeRelease.version.release.beta) {
+        return `Beta ${latestXcodeRelease.version.release.beta}`
+      }
+      if (latestXcodeRelease.version.release.dp) {
+        return `Developer Preview ${latestXcodeRelease.version.release.dp}`
+      }
+      if (latestXcodeRelease.version.release.gm) {
+        return 'GM'
+      }
+      if (latestXcodeRelease.version.release.gmSeed) {
+        return `GM Seed ${latestXcodeRelease.version.release.gmSeed}`
+      }
+      return ''
+    }
     try {
       this.bot.sendMessage(
         id,
         `🚀 A new ${latestXcodeRelease.name} version has been released: ${
           latestXcodeRelease.version.number
-        }, build ${latestXcodeRelease.version.build}, ${releaseType}\nRelease notes:\n${
+        }, build ${latestXcodeRelease.version.build}, ${releaseType()}\nRelease notes:\n${
           latestXcodeRelease.links.notes.url
         }`
       )
