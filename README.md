@@ -32,4 +32,10 @@ $ yarn dev
 
 `/users` -> Show the number of current users of this bot
 
-### [LICENSE](LICENSE.md)
+### Contributing
+
+If you encounter issues or missing features, please feel free to contribute by raising a [Pull Request](https://github.com/Bearologics/XcodeReleasesBot/pulls) against `master`.
+
+### License
+
+See [LICENSE.md](LICENSE.md).
