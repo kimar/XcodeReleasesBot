@@ -10,7 +10,10 @@
 * Yarn
 * NodeJS
 * PostgreSQL
-* Somewhere to host this e.g. [Heroku](https://heroku.com)
+* Somewhere to host this e.g.
+  * [Dokku](https://github.com/dokku/dokku)
+  * [Heroku](https://heroku.com)
+  * [Kubernetes](https://kubernetes.io)
 
 ### 🏗 Get started
 
@@ -32,10 +35,10 @@ $ yarn dev
 
 `/users` -> Show the number of current users of this bot
 
-### Contributing
+### 🎳 Contributing
 
 If you encounter issues or missing features, please feel free to contribute by raising a [Pull Request](https://github.com/Bearologics/XcodeReleasesBot/pulls) against `master`.
 
-### License
+### 👨‍⚖️ License
 
 See [LICENSE.md](LICENSE.md).
