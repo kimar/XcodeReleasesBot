@@ -11,10 +11,7 @@ export class Fetcher {
   private bot = new TelegramBot(Telegram.BotToken, { polling: true })
   private cronJob: CronJob
   private pool = new Pool({
-    connectionString: Postgres.ConnectionString,
-    ssl: {
-      rejectUnauthorized: false
-    }
+    connectionString: Postgres.ConnectionString
   })
 
   constructor() {
