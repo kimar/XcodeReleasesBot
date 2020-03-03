@@ -152,16 +152,16 @@ export class Fetcher {
       return
     }
 
+    await this.pool.query('INSERT INTO xcode_versions (build, added_at) VALUES ($1, $2)', [
+      latestXcodeRelease.version.build.toString(),
+      new Date()
+    ])
+
     const subscribersResult = await this.getAllSubscribers()
     subscribersResult.forEach(async subscriber => {
       console.log(`Sending new Xcode release message to ${subscriber}`)
       this.sendLatestMessage(latestXcodeRelease, subscriber)
     })
-
-    await this.pool.query('INSERT INTO xcode_versions (build, added_at) VALUES ($1, $2)', [
-      latestXcodeRelease.version.build.toString(),
-      new Date()
-    ])
 
     console.log(
       `Added Xcode release (${latestXcodeRelease.version.build.toString()}) to known versions.`
