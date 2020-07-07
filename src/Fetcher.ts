@@ -11,14 +11,14 @@ export class Fetcher {
   private bot = new TelegramBot(Telegram.BotToken, { polling: true })
   private cronJob: CronJob
   private pool = new Pool({
-    connectionString: Postgres.ConnectionString
+    connectionString: Postgres.ConnectionString,
   })
 
   constructor() {
     this.cronJob = new CronJob(CronJobConfig.Schedule, async () => await this.poll())
     this.cronJob.start()
 
-    this.bot.on('message', async msg => {
+    this.bot.on('message', async (msg) => {
       if (!(await this.isSubscribed(msg.chat.id.toString()))) {
         await this.subscribe(msg.chat.id.toString())
         this.bot.sendMessage(
@@ -76,13 +76,20 @@ export class Fetcher {
         id,
         `🚀 A new ${latestXcodeRelease.name} version has been released: ${
           latestXcodeRelease.version.number
-        }, build ${latestXcodeRelease.version.build}, ${releaseType()}\nRelease notes:\n${
-          latestXcodeRelease.links.notes.url
-        }`
+        }, build ${latestXcodeRelease.version.build}, ${releaseType()}${this.getReleaseNotes(
+          latestXcodeRelease
+        )}`
       )
     } catch (error) {
       console.log(`Could not send Xcode Release message to user: ${error}`)
     }
+  }
+
+  private getReleaseNotes = (latestXcodeRelease: any): string => {
+    if (latestXcodeRelease.links.notes === undefined) {
+      return ''
+    }
+    return `\nRelease notes:\n${latestXcodeRelease.links.notes.url}`
   }
 
   private fetchLatestXcodeRelease = async () => {
@@ -101,7 +108,7 @@ export class Fetcher {
 
   private getAllSubscribers = async (): Promise<string[]> => {
     const subscribersResult = await this.pool.query('SELECT telegram_id FROM subscribers')
-    return subscribersResult.rows.map(row => row.telegram_id)
+    return subscribersResult.rows.map((row) => row.telegram_id)
   }
 
   private isSubscribed = async (id: string): Promise<boolean> => {
@@ -119,7 +126,7 @@ export class Fetcher {
   private subscribe = async (id: string) => {
     await this.pool.query('INSERT INTO subscribers (telegram_id, added_at) VALUES ($1, $2)', [
       id,
-      new Date()
+      new Date(),
     ])
     console.log(`Subscriber has been added: ${id}`)
   }
@@ -154,11 +161,11 @@ export class Fetcher {
 
     await this.pool.query('INSERT INTO xcode_versions (build, added_at) VALUES ($1, $2)', [
       latestXcodeRelease.version.build.toString(),
-      new Date()
+      new Date(),
     ])
 
     const subscribersResult = await this.getAllSubscribers()
-    subscribersResult.forEach(async subscriber => {
+    subscribersResult.forEach(async (subscriber) => {
       console.log(`Sending new Xcode release message to ${subscriber}`)
       this.sendLatestMessage(latestXcodeRelease, subscriber)
     })
