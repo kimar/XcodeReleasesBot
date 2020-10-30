@@ -69,6 +69,9 @@ export class Fetcher {
       if (latestXcodeRelease.version.release.gmSeed) {
         return `GM Seed ${latestXcodeRelease.version.release.gmSeed}`
       }
+      if (latestXcodeRelease.version.release.rc) {
+        return `RC ${latestXcodeRelease.version.release.rc}`
+      }
       return ''
     }
     try {
