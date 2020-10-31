@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
         - name: xcodereleases-telegram-bot
-          image: registry.digitalocean.com/bearologics-cloud/xcodereleases-telegram-bot:1.3.0
+          image: registry.digitalocean.com/bearologics-cloud/xcodereleases-telegram-bot:1.4.0
           ports:
             - containerPort: 3000
           envFrom:
