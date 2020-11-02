@@ -33,6 +33,8 @@ spec:
       app: xcodereleases-telegram-bot
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
         app: xcodereleases-telegram-bot
     spec:
