@@ -4,6 +4,7 @@ class Postgres {
 
 class Telegram {
   static BotToken: string = process.env.TELEGRAM_BOT_TOKEN || ''
+  static BotUrl: string = process.env.TELEGRAM_BOT_URL || ''
 }
 
 class CronJob {
