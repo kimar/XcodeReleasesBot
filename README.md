@@ -1,3 +1,5 @@
+# We don't want to encourage anyone to use Telegram, therefore we're sunsettings this bot.
+
 # Xcode Releases Telegram Bot
 ## Fetching data from https://xcodereleases.com/data.json
 
