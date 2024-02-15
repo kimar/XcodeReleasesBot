@@ -7,7 +7,6 @@ COPY yarn.lock ./
 COPY tsconfig.json ./
 
 COPY src ./src
-COPY .env ./.env
 
 EXPOSE 3000
 CMD [ "yarn", "start" ]

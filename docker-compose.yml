@@ -17,9 +17,8 @@ services:
     restart: unless-stopped
     depends_on:
       - database
-    environment:
-      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
-      CRONJOB_SCHEDULE: ${CRONJOB_SCHEDULE}
+    volumes:
+      - ./.env:/home/node/app/.env
 
 volumes:
   database:
