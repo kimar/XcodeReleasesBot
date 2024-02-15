@@ -18,7 +18,7 @@ services:
     depends_on:
       - database
     volumes:
-      - ./.env:/home/node/app/.env
+      - ./.env:/home/node/app/.env:ro
 
 volumes:
   database:
