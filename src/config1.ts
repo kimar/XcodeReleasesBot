@@ -1,5 +1,7 @@
 class Postgres {
-  static ConnectionString: string = process.env.DATABASE_URL || ''
+  static ConnectionString: string =
+    process.env.DATABASE_URL ||
+    `postgres://postgres:${process.env.POSTGRES_PASSWORD}@database:5432/postgres`
 }
 
 class Telegram {
@@ -8,7 +10,7 @@ class Telegram {
 }
 
 class CronJob {
-  static Schedule = process.env.CRONJOB_SCHEDULE || '*/5 * * * *'
+  static Schedule = process.env.CRONJOB_SCHEDULE || '0 */5 * * * *'
 }
 
 export { Telegram, CronJob, Postgres }

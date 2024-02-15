@@ -1,32 +1,31 @@
 {
   "name": "xcodereleases-telegram-bot",
   "version": "1.0.0",
-  "main": "build/App.js",
+  "main": "build/app.js",
   "author": "Marcus Kida <marcus@kida.io>",
   "license": "MIT",
   "scripts": {
     "prestart": "yarn",
     "start": "node build/App.js",
-    "dev": "nodemon src/App.ts",
+    "dev": "nodemon src/app.ts",
     "postinstall": "tsc"
   },
   "devDependencies": {
-    "@types/cron": "^1.6.1",
     "@types/dotenv": "^6.1.0",
-    "@types/express": "^4.16.1",
+    "@types/express": "^4.17.21",
     "@types/node-telegram-bot-api": "^0.30.4",
+    "@types/pg": "^8.11.0",
     "nodemon": "^1.18.10",
-    "ts-node": "^9.0.0"
+    "ts-node": "^9.0.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@types/pg": "^7.4.14",
-    "axios": "^0.21.1",
-    "cron": "^1.6.0",
-    "dotenv": "^6.2.0",
-    "express": "^4.16.4",
+    "axios": "^1.6.7",
+    "cron": "^3.1.6",
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2",
     "moment": "^2.24.0",
-    "node-telegram-bot-api": "^0.30.0",
-    "pg": "^7.11.0",
-    "typescript": "^3.3.3333"
+    "node-telegram-bot-api": "^0.64.0",
+    "pg": "^8.11.3"
   }
 }

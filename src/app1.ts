@@ -2,8 +2,8 @@ import DotEnv from 'dotenv'
 DotEnv.config()
 
 import express, { Request, Response } from 'express'
-import { Fetcher } from './Fetcher'
-import { Telegram } from './Config'
+import { Fetcher } from './fetcher'
+import { Telegram } from './config1'
 
 const app = express()
 

@@ -1,7 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api'
 import { CronJob } from 'cron'
 import axios from 'axios'
-import { Telegram, CronJob as CronJobConfig, Postgres } from './Config'
+import { Telegram, CronJob as CronJobConfig, Postgres } from './config1'
 import { Pool } from 'pg'
 import moment from 'moment'
 
@@ -153,6 +153,7 @@ export class Fetcher {
     )
 
     if (
+      lastVersionRows.rowCount != null &&
       lastVersionRows.rowCount > 0 &&
       lastVersionRows.rows[0].build === latestXcodeRelease.version.build
     ) {
