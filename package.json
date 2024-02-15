@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "prestart": "yarn",
-    "start": "node build/App.js",
+    "start": "node build/app.js",
     "dev": "nodemon src/app.ts",
     "postinstall": "tsc"
   },

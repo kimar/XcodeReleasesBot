@@ -1,7 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api'
 import { CronJob } from 'cron'
 import axios from 'axios'
-import { Telegram, CronJob as CronJobConfig, Postgres } from './config1'
+import { Telegram, CronJob as CronJobConfig, Postgres } from './config'
 import { Pool } from 'pg'
 import moment from 'moment'
 
