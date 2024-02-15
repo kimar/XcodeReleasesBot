@@ -15,13 +15,8 @@ services:
   bot:
     build: .
     restart: unless-stopped
-    expose:
-      - 3000
-    volumes:
-      - ./.env:/home/node/app/.env:ro
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
-      TELEGRAM_BOT_URL: ${TELEGRAM_BOT_URL}
       CRONJOB_SCHEDULE: ${CRONJOB_SCHEDULE}
 
 volumes:
